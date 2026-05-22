@@ -19,7 +19,7 @@
 
 **Live:** [`https://piyushpi.tail641fa8.ts.net/`](https://piyushpi.tail641fa8.ts.net/) &nbsp;·&nbsp; **API:** [`/api/now`](https://piyushpi.tail641fa8.ts.net/api/now) &nbsp;·&nbsp; **Health:** `/healthz`
 
-![Ops Panel — desktop](docs/img/ops-panel-desktop.png)
+![Ops Panel — desktop](docs/img/ops-panel-desktop.webp)
 
 <sub>↑ Desktop view. Live readings on the left, Esri World Imagery + green-dot reticle on the right. Status chips track NOMINAL / CAUTION / CRITICAL per sensor. PMS5003 + MQ-135 sensors arriving tomorrow — they render as `STANDBY` until plugged in.</sub>
 
@@ -31,7 +31,7 @@
 
 </td>
 <td width="50%" align="center">
-<img src="docs/img/ops-panel-mobile.png" alt="Ops Panel — mobile" width="300">
+<img src="docs/img/ops-panel-mobile.webp" alt="Ops Panel — mobile" width="300">
 </td>
 </tr>
 </table>
