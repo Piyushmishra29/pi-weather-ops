@@ -328,6 +328,26 @@ class MQ135Poller(threading.Thread):
 
 # ------------------------------- HTTP --------------------------------------
 
+FAVICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<rect width="32" height="32" rx="3" fill="#0a0d0a"/>
+<path d="M3 8 L3 3 L8 3 M29 8 L29 3 L24 3 M3 24 L3 29 L8 29 M29 24 L29 29 L24 29" stroke="#7ba428" stroke-width="1.6" fill="none" stroke-linecap="square"/>
+<circle cx="16" cy="16" r="11" fill="none" stroke="#7eea7a" stroke-width="0.8" stroke-dasharray="1.6 2" opacity="0.7"/>
+<circle cx="16" cy="16" r="6.5" fill="none" stroke="#7eea7a" stroke-width="1" opacity="0.9"/>
+<line x1="16" y1="5" x2="16" y2="8.5" stroke="#7eea7a" stroke-width="1.4"/>
+<line x1="16" y1="23.5" x2="16" y2="27" stroke="#7eea7a" stroke-width="1.4"/>
+<line x1="5" y1="16" x2="8.5" y2="16" stroke="#7eea7a" stroke-width="1.4"/>
+<line x1="23.5" y1="16" x2="27" y2="16" stroke="#7eea7a" stroke-width="1.4"/>
+<g style="transform-origin:16px 16px;animation:sweep 2.4s linear infinite">
+  <defs><linearGradient id="sweepGrad" x1="16" y1="16" x2="16" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ff4040" stop-opacity="0"/><stop offset="60%" stop-color="#ff4040" stop-opacity="0.55"/><stop offset="100%" stop-color="#ff4040" stop-opacity="1"/></linearGradient></defs>
+  <line x1="16" y1="16" x2="16" y2="5" stroke="url(#sweepGrad)" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+<circle cx="16" cy="16" r="2.4" fill="#7eea7a">
+  <animate attributeName="opacity" values="1;0.35;1" dur="1.4s" repeatCount="indefinite"/>
+  <animate attributeName="r" values="2.2;3.2;2.2" dur="1.4s" repeatCount="indefinite"/>
+</circle>
+<style>@keyframes sweep{to{transform:rotate(360deg)}}</style>
+</svg>"""
+
 INDEX_HTML = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -336,6 +356,9 @@ INDEX_HTML = r"""<!DOCTYPE html>
 <meta name="theme-color" content="#0a0d0a">
 <meta name="color-scheme" content="dark">
 <title>OPS PANEL // ASSET PIYUSHPI</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.svg">
+<link rel="mask-icon" href="/favicon.svg" color="#7eea7a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -955,6 +978,13 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, "application/json", json.dumps(snap))
         elif path == "/healthz":
             self._send(200, "text/plain", "ok\n")
+        elif path == "/favicon.svg" or path == "/favicon.ico":
+            self._send(
+                200,
+                "image/svg+xml" if path.endswith(".svg") else "image/svg+xml",
+                FAVICON_SVG,
+                extra={"Cache-Control": "public, max-age=86400"},
+            )
         else:
             self._send(404, "text/plain", "not found\n")
 

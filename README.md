@@ -6,9 +6,14 @@
   ██         ██         ████████   ██      ██   ██     █   ██   ███   ████████   █████████ 
 -->
 
+<p>
+  <img src="docs/img/favicon-preview.webp" width="72" align="left" alt="favicon — animated radar sweep">
+  &nbsp;
+</p>
+
 # pi-weather-ops &nbsp; `// ATMOSPHERIC SURVEILLANCE NODE`
 
-> A Raspberry Pi 4 reading temperature, humidity, particulate matter and VOC contamination — served behind a tactical ops-panel UI, exposed to the public internet on a real Let's Encrypt cert via Tailscale Funnel. One Python file. No framework. No database.
+> A Raspberry Pi 4 reading temperature, humidity, particulate matter and VOC contamination — served behind a tactical ops-panel UI, exposed to the public internet on a real Let's Encrypt cert via Tailscale Funnel. One Python file. No framework. No database. <em>Also: the favicon ☝️ is an animated SVG radar sweep that ticks in your browser tab.</em>
 
 [![status](https://img.shields.io/badge/STATUS-NOMINAL-7eea7a?style=flat-square&labelColor=10140d)](https://piyushpi.tail641fa8.ts.net/)
 [![live](https://img.shields.io/badge/UPLINK-TAILSCALE%20FUNNEL-7ba428?style=flat-square&labelColor=10140d)](https://piyushpi.tail641fa8.ts.net/)
