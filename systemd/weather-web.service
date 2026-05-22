@@ -1,0 +1,14 @@
+[Unit]
+Description=Pi Weather Server (DHT11 + PMS5003 + MQ-135)
+After=network-online.target pigpiod.service
+Wants=network-online.target pigpiod.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/piyush/weather-web.py
+Restart=on-failure
+RestartSec=3
+User=piyush
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
