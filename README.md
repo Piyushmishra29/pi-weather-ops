@@ -318,6 +318,38 @@ journalctl -u weather-web -f
 
 ---
 
+## OLED dashboard ([`pi_dashboard.py`](pi_dashboard.py))
+
+A separate side-show: a 128×64 SH1106 OLED wired to the same Pi's I²C bus shows a live ops dashboard — DHT11 temp/humidity hero line, CPU/RAM bars, Pi temperature, uptime, load, marching-ants borders. Refreshes every 200 ms. Self-heals on I²C drops (up to 3 retries, then full device re-init). Renders a full-screen message overlay when any process touches `/tmp/pi_oled_msg` — that's how the Hermes/WhatsApp bridge pushes text to the screen.
+
+### Boot splash
+
+Before the dashboard takes over, the script plays a ~8-second intro:
+
+1. Blinking cursor on a black screen (CRT warm-up)
+2. Typewriter terminal log: `> biome.init` / `> host..........piyushpi` / `> i2c@0x3C......online` / `> dht11.........ready` / `> READY.`
+3. Scanline wipe sweeps the log away
+4. A pothos plant grows in 6 frames — pot → stem → side leaves → top leaf → trailing vines
+5. Hero **PIYUSHPI** logo with the Pi's LAN IP and spec line, plus a 0→100 % progress bar
+6. Inverted flash transitions into the live dashboard
+
+### systemd
+
+`pi-dashboard.service` lives in [`systemd/`](systemd/). Enable with:
+
+```bash
+sudo systemctl enable --now pi-dashboard
+```
+
+Restart any time to replay the splash:
+
+```bash
+sudo systemctl restart pi-dashboard
+journalctl -u pi-dashboard -f
+```
+
+---
+
 ## Field notes
 
 A.k.a. things I learned in production that aren't in any datasheet.

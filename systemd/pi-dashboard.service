@@ -1,0 +1,15 @@
+[Unit]
+Description=Pi OLED OPS Dashboard (SH1106 + DHT11)
+After=network.target
+
+[Service]
+Type=simple
+User=piyush
+ExecStart=/usr/bin/python3 /home/piyush/pi_dashboard.py
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
