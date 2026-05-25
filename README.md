@@ -324,6 +324,10 @@ A separate side-show: a 128×64 SH1106 OLED wired to the same Pi's I²C bus show
 
 ### Boot splash
 
+<p align="center">
+  <img src="docs/img/boot-splash.gif" alt="OLED boot splash animation" width="384">
+</p>
+
 Before the dashboard takes over, the script plays a ~8-second intro:
 
 1. Blinking cursor on a black screen (CRT warm-up)
